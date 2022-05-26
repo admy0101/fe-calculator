@@ -1,4 +1,12 @@
+//import { useState } from "react";
+console.log("what's up?");
 const Buttons = () => {
+  const adding = () => {
+    console.log("hello");
+  };
+
+  //const [button, setButton] = useState(0)
+
   return (
     <div className="container-buttons">
       <div className="component-buttons">
@@ -17,7 +25,7 @@ const Buttons = () => {
       </div>
       <div className="component-buttons">
         <div>
-          <button>7</button>
+          <button onClick={adding}>7</button>
         </div>
         <div>
           <button>8</button>
