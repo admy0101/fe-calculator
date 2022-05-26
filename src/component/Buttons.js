@@ -1,12 +1,8 @@
-//import { useState } from "react";
-console.log("what's up?");
 const Buttons = () => {
-  const adding = () => {
-    console.log("hello");
+  const adding = (but) => {
+    console.log(but.target.name);
+    console.log();
   };
-
-  //const [button, setButton] = useState(0)
-
   return (
     <div className="container-buttons">
       <div className="component-buttons">
@@ -25,10 +21,14 @@ const Buttons = () => {
       </div>
       <div className="component-buttons">
         <div>
-          <button onClick={adding}>7</button>
+          <button name="7" onClick={adding}>
+            7
+          </button>
         </div>
         <div>
-          <button>8</button>
+          <button name="8" onClick={adding}>
+            8
+          </button>
         </div>
         <div>
           <button>9</button>
