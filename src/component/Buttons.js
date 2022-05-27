@@ -1,14 +1,9 @@
 import { useState } from "react";
+import Header from "./Header";
 const Buttons = (number) => {
-  // const adding = (but) => {
-  //   console.log(but.target.name);
-  //   number += but.target.name;
-  //   console.log(number);
-  // };
-
   const [result, setCalc] = useState("");
-
   const notTo = ["/", "*", "-", "+"];
+  //
   const updateCalc = (but) => {
     let value = but.target.name;
     if (
@@ -29,8 +24,13 @@ const Buttons = (number) => {
     }
   };
   const done = () => {
-    let sum = eval(result);
-    setCalc(sum.toString());
+    let lastDigit = result.slice(result.length - 1, result.length);
+    if (result === "" || notTo.includes(lastDigit)) {
+      return;
+    } else {
+      let sum = eval(result);
+      setCalc(sum.toString());
+    }
   };
   const reset = () => {
     setCalc("");
@@ -43,11 +43,10 @@ const Buttons = (number) => {
       ? setCalc("")
       : setCalc(result.slice(0, result.length - 1));
   };
+  //
   return (
     <>
-      <div className="header">
-        <h1>{result || "0"}</h1>
-      </div>
+      {Header(result)}
       <div className="container-buttons">
         <div className="component-buttons">
           <div>

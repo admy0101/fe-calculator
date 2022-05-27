@@ -1,9 +1,7 @@
 const Header = (number) => {
-  
-  
   return (
     <div className="header">
-      <h1>{number}</h1>
+      <h1>{number || "0"}</h1>
     </div>
   );
 };
