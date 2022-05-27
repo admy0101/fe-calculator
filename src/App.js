@@ -5,16 +5,15 @@ import React from "react";
 
 function App() {
   const [number, setNumber] = React.useState(0);
-  console.log(number, "<<<<");
-  const somethingElse = () => {
-    setNumber((number) => {
-      number++;
-    });
-  };
+  // const somethingElse = () => {
+  //   setNumber((number) => {
+  //     number++;
+  //   });
+  // };
 
   return (
     <div className="App">
-      {Header(number)}
+      {/* {Header(number)} */}
       {Buttons(number)}
     </div>
   );
