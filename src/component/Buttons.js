@@ -13,15 +13,24 @@ const Buttons = (number) => {
     let value = but.target.name;
     if (
       (notTo.includes(value) && result === "") ||
-      (result.endsWith("/") && value === "/")
+      (value === "." && result.split("").includes(".")) ||
+      (value === "0" && result === "")
     ) {
+      console.log(".");
       return;
+    } else if (notTo.includes(value) && notTo.includes(result.slice(-1))) {
+      let newResult = result.slice(0, result.length - 1);
+      console.log(value);
+      setCalc(newResult + value);
+    } else if (value === "." && result === "") {
+      setCalc("0.");
     } else {
       setCalc(result + value);
     }
   };
   const done = () => {
-    setCalc(eval(result));
+    let sum = eval(result);
+    setCalc(sum.toString());
   };
   const reset = () => {
     setCalc("");
