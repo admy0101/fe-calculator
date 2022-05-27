@@ -8,13 +8,32 @@ const Buttons = (number) => {
 
   const [result, setCalc] = useState("");
 
+  const notTo = ["/", "*", "-", "+"];
   const updateCalc = (but) => {
-    setCalc(result + but.target.name);
-    console.log(result);
+    let value = but.target.name;
+    if (
+      (notTo.includes(value) && result === "") ||
+      (result.endsWith("/") && value === "/")
+    ) {
+      return;
+    } else {
+      setCalc(result + value);
+    }
   };
-  // const done = () => {
-  //   setCalc(eval(result));
-  // };
+  const done = () => {
+    setCalc(eval(result));
+  };
+  const reset = () => {
+    setCalc("");
+  };
+  const makeNegative = () => {
+    setCalc(result * -1);
+  };
+  const deletLast = () => {
+    result.length <= 1
+      ? setCalc("")
+      : setCalc(result.slice(0, result.length - 1));
+  };
   return (
     <>
       <div className="header">
@@ -23,14 +42,16 @@ const Buttons = (number) => {
       <div className="container-buttons">
         <div className="component-buttons">
           <div>
-            <button>AC</button>
+            <button name="" onClick={reset}>
+              AC
+            </button>
           </div>
           <div>
-            <button>+/-</button>
+            <button onClick={makeNegative}>+/-</button>
           </div>
           <div>
-            <button name="%" onClick={updateCalc}>
-              %
+            <button name="%" onClick={deletLast}>
+              Del
             </button>
           </div>
           <div>
@@ -117,7 +138,9 @@ const Buttons = (number) => {
             </button>
           </div>
           <div>
-            <button className="orange">=</button>
+            <button className="orange" onClick={done}>
+              =
+            </button>
           </div>
         </div>
       </div>
